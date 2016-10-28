@@ -146,43 +146,7 @@ public class MipMapImageRaster extends ImageRaster {
         if (store == null) {
             store = new ColorRGBA();
         }
-        switch (codec.type) {
-            case ImageCodec.FLAG_F16:
-                store.set(FastMath.convertHalfToFloat((short) components[1]),
-                        FastMath.convertHalfToFloat((short) components[2]),
-                        FastMath.convertHalfToFloat((short) components[3]),
-                        FastMath.convertHalfToFloat((short) components[0]));
-                break;
-            case ImageCodec.FLAG_F32:
-                store.set(Float.intBitsToFloat((int) components[1]),
-                        Float.intBitsToFloat((int) components[2]),
-                        Float.intBitsToFloat((int) components[3]),
-                        Float.intBitsToFloat((int) components[0]));
-                break;
-            case 0:
-                // Convert to float and divide by bitsize to get into range 0.0 - 1.0.
-                store.set((float) components[1] / codec.maxRed,
-                        (float) components[2] / codec.maxGreen,
-                        (float) components[3] / codec.maxBlue,
-                        (float) components[0] / codec.maxAlpha);
-                break;
-        }
-        if (codec.isGray) {
-            store.g = store.b = store.r;
-        } else {
-            if (codec.maxRed == 0) {
-                store.r = 1;
-            }
-            if (codec.maxGreen == 0) {
-                store.g = 1;
-            }
-            if (codec.maxBlue == 0) {
-                store.b = 1;
-            }
-            if (codec.maxAlpha == 0) {
-                store.a = 1;
-            }
-        }
+        super.whatsHisFace(store, components, codec);
         return store;
     }
 
