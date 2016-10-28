@@ -56,4 +56,12 @@ public class FastMathTest {
             assert nextPowerOf2 == nearestPowerOfTwoSlow(i);
         }
     }
+    
+    @Test
+    public void testDeterminant()
+    {
+    	Matrix4f matrix = new Matrix4f(1, 1, 1, 2, 3, 4, 2, 3, 1, 5, 3, 2, 1, 2, 3, 4);    	
+    	float determinant = FastMath.determinant(matrix);
+    	System.out.println(determinant);
+    }
 }

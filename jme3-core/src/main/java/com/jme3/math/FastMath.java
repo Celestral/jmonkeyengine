@@ -734,21 +734,18 @@ final public class FastMath {
     /**
      * Returns the determinant of a 4x4 matrix.
      */
-    public static float determinant(double m00, double m01, double m02,
-            double m03, double m10, double m11, double m12, double m13,
-            double m20, double m21, double m22, double m23, double m30,
-            double m31, double m32, double m33) {
+    public static float determinant(Matrix4f matrix) {
 
-        double det01 = m20 * m31 - m21 * m30;
-        double det02 = m20 * m32 - m22 * m30;
-        double det03 = m20 * m33 - m23 * m30;
-        double det12 = m21 * m32 - m22 * m31;
-        double det13 = m21 * m33 - m23 * m31;
-        double det23 = m22 * m33 - m23 * m32;
-        return (float) (m00 * (m11 * det23 - m12 * det13 + m13 * det12) - m01
-                * (m10 * det23 - m12 * det03 + m13 * det02) + m02
-                * (m10 * det13 - m11 * det03 + m13 * det01) - m03
-                * (m10 * det12 - m11 * det02 + m12 * det01));
+        double det01 = matrix.m20 * matrix.m31 - matrix.m21 * matrix.m30;
+        double det02 = matrix.m20 * matrix.m32 - matrix.m22 * matrix.m30;
+        double det03 = matrix.m20 * matrix.m33 - matrix.m23 * matrix.m30;
+        double det12 = matrix.m21 * matrix.m32 - matrix.m22 * matrix.m31;
+        double det13 = matrix.m21 * matrix.m33 - matrix.m23 * matrix.m31;
+        double det23 = matrix.m22 * matrix.m33 - matrix.m23 * matrix.m32;
+        return (float) (matrix.m00 * (matrix.m11 * det23 - matrix.m12 * det13 + matrix.m13 * det12) - matrix.m01
+                * (matrix.m10 * det23 - matrix.m12 * det03 + matrix.m13 * det02) +matrix. m02
+                * (matrix.m10 * det13 - matrix.m11 * det03 + matrix.m13 * det01) - matrix.m03
+                * (matrix.m10 * det12 - matrix.m11 * det02 + matrix.m12 * det01));
     }
 
     /**
