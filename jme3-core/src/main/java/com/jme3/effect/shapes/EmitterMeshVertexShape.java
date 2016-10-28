@@ -39,7 +39,7 @@ import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer.Type;
-import com.jme3.util.BufferUtils;
+import com.jme3.util.IntBufferUtils;
 import com.jme3.util.clone.Cloner;
 import com.jme3.util.clone.JmeCloneable;
 import java.io.IOException;
@@ -85,8 +85,8 @@ public class EmitterMeshVertexShape implements EmitterShape {
         this.normals = new ArrayList<List<Vector3f>>(meshes.size());
         for (Mesh mesh : meshes) {
             // fetching the data
-            float[] vertexTable = BufferUtils.getFloatArray(mesh.getFloatBuffer(Type.Position));
-            float[] normalTable = BufferUtils.getFloatArray(mesh.getFloatBuffer(Type.Normal));
+            float[] vertexTable = IntBufferUtils.getFloatArray(mesh.getFloatBuffer(Type.Position));
+            float[] normalTable = IntBufferUtils.getFloatArray(mesh.getFloatBuffer(Type.Normal));
 
             // unifying normals
             for (int i = 0; i < vertexTable.length; i += 3) {// the tables should have the same size and be dividable by 3

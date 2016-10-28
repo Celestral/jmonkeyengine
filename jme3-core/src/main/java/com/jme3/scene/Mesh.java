@@ -48,6 +48,7 @@ import com.jme3.scene.VertexBuffer.Type;
 import com.jme3.scene.VertexBuffer.Usage;
 import com.jme3.scene.mesh.*;
 import com.jme3.util.BufferUtils;
+import com.jme3.util.IntBufferUtils;
 import com.jme3.util.IntMap;
 import com.jme3.util.IntMap.Entry;
 import com.jme3.util.SafeArrayList;
@@ -1080,7 +1081,7 @@ public class Mesh implements Savable, Cloneable, JmeCloneable {
     }
 
     public void setBuffer(Type type, int components, int[] buf){
-        setBuffer(type, components, BufferUtils.createIntBuffer(buf));
+        setBuffer(type, components, IntBufferUtils.createIntBuffer(buf));
     }
 
     public void setBuffer(Type type, int components, ShortBuffer buf) {

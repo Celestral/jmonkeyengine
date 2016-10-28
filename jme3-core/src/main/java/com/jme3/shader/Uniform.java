@@ -33,6 +33,9 @@ package com.jme3.shader;
 
 import com.jme3.math.*;
 import com.jme3.util.BufferUtils;
+import com.jme3.util.IntBufferUtils;
+import com.jme3.util.Vector2BufferUtils;
+
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -207,7 +210,7 @@ public class Uniform extends ShaderVariable {
             case IntArray:
                 int[] ia = (int[]) value;
                 if (this.value == null) {
-                    this.value = BufferUtils.createIntBuffer(ia);
+                    this.value = IntBufferUtils.createIntBuffer(ia);
                 } else {
                     this.value = BufferUtils.ensureLargeEnough((IntBuffer)this.value, ia.length);
                 }
@@ -226,12 +229,12 @@ public class Uniform extends ShaderVariable {
             case Vector2Array:
                 Vector2f[] v2a = (Vector2f[]) value;
                 if (multiData == null) {
-                    multiData = BufferUtils.createFloatBuffer(v2a);
+                    multiData = Vector2BufferUtils.createFloatBuffer(v2a);
                 } else {
                     multiData = BufferUtils.ensureLargeEnough(multiData, v2a.length * 2);
                 }
                 for (int i = 0; i < v2a.length; i++) {
-                    BufferUtils.setInBuffer(v2a[i], multiData, i);
+                    Vector2BufferUtils.setInBuffer(v2a[i], multiData, i);
                 }
                 multiData.clear();
                 break;

@@ -40,6 +40,8 @@ import com.jme3.scene.VertexBuffer.Format;
 import com.jme3.scene.VertexBuffer.Usage;
 import com.jme3.util.BufferUtils;
 import com.jme3.util.TempVars;
+import com.jme3.util.Vector2BufferUtils;
+
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
@@ -86,7 +88,7 @@ public class ParticleTriMesh extends ParticleMesh {
         }
 
         // set texcoords
-        FloatBuffer tb = BufferUtils.createVector2Buffer(numParticles * 4);
+        FloatBuffer tb = Vector2BufferUtils.createVector2Buffer(numParticles * 4);
         uniqueTexCoords = false;
         for (int i = 0; i < numParticles; i++){
             tb.put(0f).put(1f);

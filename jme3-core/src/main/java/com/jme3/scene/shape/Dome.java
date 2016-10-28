@@ -42,6 +42,8 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer.Type;
 import com.jme3.util.BufferUtils;
 import com.jme3.util.TempVars;
+import com.jme3.util.Vector2BufferUtils;
+
 import java.io.IOException;
 import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
@@ -200,7 +202,7 @@ public class Dome extends Mesh {
 
         FloatBuffer vb = BufferUtils.createVector3Buffer(vertCount);
         FloatBuffer nb = BufferUtils.createVector3Buffer(vertCount);
-        FloatBuffer tb = BufferUtils.createVector2Buffer(vertCount);
+        FloatBuffer tb = Vector2BufferUtils.createVector2Buffer(vertCount);
         setBuffer(Type.Position, 3, vb);
         setBuffer(Type.Normal, 3, nb);
         setBuffer(Type.TexCoord, 2, tb);

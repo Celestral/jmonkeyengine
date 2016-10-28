@@ -11,6 +11,8 @@ import com.jme3.scene.VertexBuffer.Type;
 import com.jme3.scene.VertexBuffer.Usage;
 import com.jme3.scene.mesh.IndexBuffer;
 import com.jme3.util.BufferUtils;
+import com.jme3.util.IntBufferUtils;
+
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -297,7 +299,7 @@ public class GeometryBatchFactory {
         }
         for (int i = 0; i < lodLevels; i++) {
             lods[i] = new VertexBuffer(Type.Index);
-            lods[i].setupData(Usage.Dynamic, 1, Format.UnsignedInt, BufferUtils.createIntBuffer(lodData[i]));
+            lods[i].setupData(Usage.Dynamic, 1, Format.UnsignedInt, IntBufferUtils.createIntBuffer(lodData[i]));
         }
         outMesh.setLodLevels(lods);
     }

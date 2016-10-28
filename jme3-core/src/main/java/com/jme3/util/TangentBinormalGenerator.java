@@ -266,7 +266,7 @@ public class TangentBinormalGenerator {
             for (int j = 0; j < 3; j++) {
                 index[j] = indexBuffer.get(i * 3 + j);
                 populateFromBuffer(v[j], vertexBuffer, index[j]);
-                populateFromBuffer(t[j], textureBuffer, index[j]);
+                Vector2BufferUtils.populateFromBuffer(t[j], textureBuffer, index[j]);
             }
             
             TriangleData triData = processTriangle(index, v, t);
@@ -470,13 +470,13 @@ public class TangentBinormalGenerator {
         populateFromBuffer(v[0], vertexBuffer, index[0]);
         populateFromBuffer(v[1], vertexBuffer, index[1]);
         
-        populateFromBuffer(t[0], textureBuffer, index[0]);
-        populateFromBuffer(t[1], textureBuffer, index[1]);
+        Vector2BufferUtils.populateFromBuffer(t[0], textureBuffer, index[0]);
+        Vector2BufferUtils.populateFromBuffer(t[1], textureBuffer, index[1]);
         
         for (int i = 2; i < indexBuffer.size(); i++) {
             index[2] = indexBuffer.get(i);
             BufferUtils.populateFromBuffer(v[2], vertexBuffer, index[2]);
-            BufferUtils.populateFromBuffer(t[2], textureBuffer, index[2]);
+            Vector2BufferUtils.populateFromBuffer(t[2], textureBuffer, index[2]);
             
             boolean isDegenerate = isDegenerateTriangle(v[0], v[1], v[2]);
             TriangleData triData = processTriangle(index, v, t);
@@ -518,13 +518,13 @@ public class TangentBinormalGenerator {
         populateFromBuffer(v[0], vertexBuffer, index[0]);
         populateFromBuffer(v[1], vertexBuffer, index[1]);
         
-        populateFromBuffer(t[0], textureBuffer, index[0]);
-        populateFromBuffer(t[1], textureBuffer, index[1]);
+        Vector2BufferUtils.populateFromBuffer(t[0], textureBuffer, index[0]);
+        Vector2BufferUtils.populateFromBuffer(t[1], textureBuffer, index[1]);
         
         for (int i = 2; i < vertexBuffer.limit() / 3; i++) {
             index[2] = indexBuffer.get(i);
             populateFromBuffer(v[2], vertexBuffer, index[2]);
-            populateFromBuffer(t[2], textureBuffer, index[2]);
+            Vector2BufferUtils.populateFromBuffer(t[2], textureBuffer, index[2]);
             
             TriangleData triData = processTriangle(index, v, t);
             vertices.get(index[0]).triangles.add(triData);
@@ -658,7 +658,7 @@ public class TangentBinormalGenerator {
             
             populateFromBuffer(position, vertexBuffer, i);
             populateFromBuffer(normal, normalBuffer, i);
-            populateFromBuffer(texCoord, texcoordBuffer, i);
+            Vector2BufferUtils.populateFromBuffer(texCoord, texcoordBuffer, i);
             
             boolean found = false;
             //Nehon 07/07/2013

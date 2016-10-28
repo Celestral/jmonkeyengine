@@ -42,6 +42,8 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer.Type;
 import com.jme3.scene.mesh.IndexBuffer;
 import com.jme3.util.BufferUtils;
+import com.jme3.util.Vector2BufferUtils;
+
 import static com.jme3.util.BufferUtils.*;
 import java.io.IOException;
 import java.nio.FloatBuffer;
@@ -233,7 +235,7 @@ public class Cylinder extends Mesh {
         setBuffer(Type.Normal, 3, createVector3Buffer(getFloatBuffer(Type.Normal), vertCount));
 
         // Texture co-ordinates
-        setBuffer(Type.TexCoord, 2, createVector2Buffer(vertCount));
+        setBuffer(Type.TexCoord, 2, Vector2BufferUtils.createVector2Buffer(vertCount));
 
         int triCount = ((closed ? 2 : 0) + 2 * (axisSamples - 1)) * radialSamples;
         

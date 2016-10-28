@@ -35,6 +35,7 @@ import com.jme3.export.*;
 import com.jme3.math.FastMath;
 import com.jme3.renderer.Renderer;
 import com.jme3.util.BufferUtils;
+import com.jme3.util.DoubleBufferUtils;
 import com.jme3.util.NativeObject;
 import java.io.IOException;
 import java.nio.*;
@@ -998,7 +999,7 @@ public class VertexBuffer extends NativeObject implements Savable, Cloneable {
             case Float:
                 return BufferUtils.createFloatBuffer(total);
             case Double:
-                return BufferUtils.createDoubleBuffer(total);
+                return DoubleBufferUtils.createDoubleBuffer(total);
             default:
                 throw new UnsupportedOperationException("Unrecoginized buffer format: "+format);
         }
